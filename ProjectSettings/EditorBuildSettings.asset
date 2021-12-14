@@ -4,7 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Samples/Aryzon MR Headset Plugin/3.0.5/Aryzon Examples/Scenes/Rotational
+      Tracking/Rotational Tracking.unity
+    guid: bc073b9ec0589466e898fbe62eb19c07
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 744b813df90924c169af73489b8325de,
       type: 2}

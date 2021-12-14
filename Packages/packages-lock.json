@@ -1,5 +1,22 @@
 {
   "dependencies": {
+    "com.aryzon.unity-sdk": {
+      "version": "https://github.com/Aryzon/unity-sdk.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "0a11652325510550007fa22aba77fdec038f622e"
+    },
+    "com.google.xr.cardboard": {
+      "version": "https://github.com/Aryzon/cardboard-xr-plugin.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.xr.management": "3.2.9",
+        "com.unity.xr.legacyinputhelpers": "2.1.4"
+      },
+      "hash": "c258cfd1c5470ef1b09e62e85f9985d19dc9046a"
+    },
     "com.unity.collab-proxy": {
       "version": "1.13.5",
       "depth": 0,
