@@ -45,3 +45,13 @@ MonoBehaviour:
     m_SpecifySize: 1
     m_Name: AryzonSmall_MarkerImage
     m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5407918838128871935
+      m_GuidHigh: 10847445504863236787
+    m_SerializedTextureGuid:
+      m_GuidLow: 16016052181223660717
+      m_GuidHigh: 7084930050275242488
+    m_Size: {x: 0.05, y: 0.06666667}
+    m_SpecifySize: 1
+    m_Name: 20211218_191533
+    m_Texture: {fileID: 0}
