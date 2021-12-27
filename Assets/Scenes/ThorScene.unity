@@ -743,6 +743,20 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 635241824}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &329724584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329724580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &555088050
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,7 +988,12 @@ PrefabInstance:
     - target: {fileID: 169129300263619612, guid: 749352d519da6a9429228113139e0ab3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 169129300263619613, guid: 749352d519da6a9429228113139e0ab3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -21.831
       objectReference: {fileID: 0}
     - target: {fileID: 169129300263619613, guid: 749352d519da6a9429228113139e0ab3,
         type: 3}
@@ -995,6 +1014,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 169129300263619613, guid: 749352d519da6a9429228113139e0ab3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.729
       objectReference: {fileID: 0}
     - target: {fileID: 169129300263619613, guid: 749352d519da6a9429228113139e0ab3,
         type: 3}
@@ -6751,6 +6775,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3464631568764f278c02b60fbcbf69a, type: 3}
+--- !u!1 &1460515889 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 169129300263619612, guid: 749352d519da6a9429228113139e0ab3,
+    type: 3}
+  m_PrefabInstance: {fileID: 635241824}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1460515894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460515889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &1547151673
 GameObject:
   m_ObjectHideFlags: 0
@@ -7733,11 +7777,16 @@ PrefabInstance:
     - target: {fileID: 5691582783975966532, guid: 853c5ed3425aae14497e65497b84cecc,
         type: 3}
       propertyPath: monitorScreens.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5691582783975966532, guid: 853c5ed3425aae14497e65497b84cecc,
         type: 3}
       propertyPath: monitorScreens.Array.data[0]
+      value: 
+      objectReference: {fileID: 1460515889}
+    - target: {fileID: 5691582783975966532, guid: 853c5ed3425aae14497e65497b84cecc,
+        type: 3}
+      propertyPath: monitorScreens.Array.data[1]
       value: 
       objectReference: {fileID: 329724580}
     m_RemovedComponents: []

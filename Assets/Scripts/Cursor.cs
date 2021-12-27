@@ -28,31 +28,31 @@ public class Cursor : MonoBehaviour
         float mouseX = Input.GetAxisRaw("Mouse X");
         float mouseY = Input.GetAxisRaw("Mouse Y");
         rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x + mouseX * mouseSpeed, rectTransform.anchoredPosition.y + mouseY * mouseSpeed);
-        if (mouseX != 0)
-        {
-            // Mouse moved horizontally. Might have moved out of screen. 
+        if (mouseX != 0)  // Mouse moved horizontally. Might have moved out of screen. 
             HandleMouseMonitorTransitions();
-        }
-        Debug.Log(RectTransformUtility.RectangleContainsScreenPoint(currentScreen, rectTransform.position));
-        Debug.Log($"{rectTransform.localPosition} {currentScreen.rect.width}");
     }
 
     private void HandleMouseMonitorTransitions()
     {
-        float leftSideBoundary = -currentScreen.rect.width / 2;
         float rightSideBoundary = currentScreen.rect.width / 2;
+        float leftSideBoundary = -rightSideBoundary;
         float x = rectTransform.localPosition.x;
+        bool isWithinScreenBoundary = x > leftSideBoundary && x < rightSideBoundary;
+        if (isWithinScreenBoundary) return;
 
-        if (x < leftSideBoundary && currentScreenIndex != 0) currentScreenIndex--;
-        else if (x > rightSideBoundary && currentScreenIndex < monitorScreens.Length - 1) currentScreenIndex++;
-
-        UpdateMonitor();
+        bool movedLeft = x < leftSideBoundary;
+        UpdateMonitor(movedLeft);
     }
 
-    private void UpdateMonitor()
+    private void UpdateMonitor(bool moveLeft)
     {
+        if (moveLeft && currentScreenIndex != 0) currentScreenIndex--;
+        else if (!moveLeft && currentScreenIndex < monitorScreens.Length - 1) currentScreenIndex++;
+
         currentScreen = monitorScreens[currentScreenIndex].GetComponent<RectTransform>();
         this.gameObject.transform.parent = currentScreen;
+        float newCursorXValue = moveLeft ? currentScreen.rect.width / 2 : -currentScreen.rect.width / 2;
+        rectTransform.anchoredPosition = new Vector2(newCursorXValue, rectTransform.anchoredPosition.y);
     }
 
     public static bool RectTransformContainsAnother(RectTransform rectTransform, RectTransform another)
