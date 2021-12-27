@@ -8,6 +8,7 @@ public class Cursor : MonoBehaviour
 
     [Tooltip("First monitor in array will be the default starting one.")]
     [SerializeField] GameObject[] monitorScreens;
+    int currentScreenIndex = 0; // Index of current screen
 
     RectTransform rectTransform;
     RectTransform currentScreen;
@@ -18,17 +19,40 @@ public class Cursor : MonoBehaviour
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        currentScreen = monitorScreens[0].GetComponent<RectTransform>();
+        currentScreen = monitorScreens[currentScreenIndex].GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float horizontal = Input.GetAxisRaw("Mouse X");
-        float vertical = Input.GetAxisRaw("Mouse Y");
-        rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x + horizontal * mouseSpeed, rectTransform.anchoredPosition.y + vertical * mouseSpeed);
+        float mouseX = Input.GetAxisRaw("Mouse X");
+        float mouseY = Input.GetAxisRaw("Mouse Y");
+        rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x + mouseX * mouseSpeed, rectTransform.anchoredPosition.y + mouseY * mouseSpeed);
+        if (mouseX != 0)
+        {
+            // Mouse moved horizontally. Might have moved out of screen. 
+            HandleMouseMonitorTransitions();
+        }
         Debug.Log(RectTransformUtility.RectangleContainsScreenPoint(currentScreen, rectTransform.position));
-        Debug.Log($"{rectTransform.localPosition} {currentScreen.position}");
+        Debug.Log($"{rectTransform.localPosition} {currentScreen.rect.width}");
+    }
+
+    private void HandleMouseMonitorTransitions()
+    {
+        float leftSideBoundary = -currentScreen.rect.width / 2;
+        float rightSideBoundary = currentScreen.rect.width / 2;
+        float x = rectTransform.localPosition.x;
+
+        if (x < leftSideBoundary && currentScreenIndex != 0) currentScreenIndex--;
+        else if (x > rightSideBoundary && currentScreenIndex < monitorScreens.Length - 1) currentScreenIndex++;
+
+        UpdateMonitor();
+    }
+
+    private void UpdateMonitor()
+    {
+        currentScreen = monitorScreens[currentScreenIndex].GetComponent<RectTransform>();
+        this.gameObject.transform.parent = currentScreen;
     }
 
     public static bool RectTransformContainsAnother(RectTransform rectTransform, RectTransform another)
