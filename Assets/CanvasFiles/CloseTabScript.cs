@@ -24,7 +24,7 @@ namespace Aryzon
             //vidPlayer = gameObject.GetComponent<VideoPlayer>();
             menuCanvas = GameObject.Find("CanvasMenu");
             Debug.Log(gameObject.transform.parent.parent.gameObject);
-          
+
 
         }
 
@@ -72,12 +72,20 @@ namespace Aryzon
                 gameObject.transform.parent.gameObject.SetActive(false);
                 displayContent.transform.gameObject.SetActive(true);
             }
-            
+
         }
 
         private void Clicked()
         {
 
+        }
+
+        void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Mouse")) // Called when user clicks on this part
+            {
+                Down();
+            }
         }
     }
 }

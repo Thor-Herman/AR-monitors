@@ -68,5 +68,13 @@ namespace Aryzon
         {
 
         }
+
+        void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Mouse")) // Called when user clicks on this part
+            {
+                Down();
+            }
+        }
     }
 }

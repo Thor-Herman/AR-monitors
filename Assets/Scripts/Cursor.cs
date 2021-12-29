@@ -12,6 +12,7 @@ public class Cursor : MonoBehaviour
 
     RectTransform rectTransform;
     RectTransform currentScreen;
+    Collider boxCollider;
     [SerializeField] float mouseSpeed = 1.5f;
     bool mouseOnThisCanvas = true;
 
@@ -20,6 +21,8 @@ public class Cursor : MonoBehaviour
     {
         rectTransform = GetComponent<RectTransform>();
         currentScreen = monitorScreens[currentScreenIndex].GetComponent<RectTransform>();
+        boxCollider = GetComponent<BoxCollider>();
+        boxCollider.enabled = false;
     }
 
     // Update is called once per frame
@@ -27,9 +30,21 @@ public class Cursor : MonoBehaviour
     {
         float mouseX = Input.GetAxisRaw("Mouse X");
         float mouseY = Input.GetAxisRaw("Mouse Y");
+        bool mousePressedDown = Input.GetButtonDown("Fire1");
         rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x + mouseX * mouseSpeed, rectTransform.anchoredPosition.y + mouseY * mouseSpeed);
         if (mouseX != 0)  // Mouse moved horizontally. Might have moved out of screen. 
             HandleMouseMonitorTransitions();
+        if (mousePressedDown)
+        {
+            StartCoroutine(MouseClick());
+        }
+    }
+
+    private IEnumerator MouseClick()
+    {
+        boxCollider.enabled = true;
+        yield return new WaitForSeconds(0.1f);
+        boxCollider.enabled = false;
     }
 
     private void HandleMouseMonitorTransitions()
