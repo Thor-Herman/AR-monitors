@@ -93,7 +93,7 @@ MonoBehaviour:
   monitorScreens:
   - {fileID: 0}
   - {fileID: 0}
-  mouseSpeed: 1.5
+  mouseSpeed: 3
 --- !u!54 &1213893996
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -18,7 +18,5 @@ public class EscreverData : MonoBehaviour
         {
             gameObject.GetComponent<Text>().text = System.DateTime.Now.ToString("dddd dd MMMM yyyy", CultureInfo.CreateSpecificCulture("en-US"));
         }
-        
-
     }
 }
