@@ -61,13 +61,19 @@ public class Cursor : MonoBehaviour
 
     private void UpdateMonitor(bool moveLeft)
     {
+        int oldCurrentScreenIndex = currentScreenIndex;
         if (moveLeft && currentScreenIndex != 0) currentScreenIndex--;
         else if (!moveLeft && currentScreenIndex < monitorScreens.Length - 1) currentScreenIndex++;
 
-        currentScreen = monitorScreens[currentScreenIndex].GetComponent<RectTransform>();
-        this.gameObject.transform.parent = currentScreen;
-        float newCursorXValue = moveLeft ? currentScreen.rect.width / 2 : -currentScreen.rect.width / 2;
+        bool changedScreen = oldCurrentScreenIndex != currentScreenIndex;
+        float newCursorXValue = changedScreen ? ChangeActiveMonitor(moveLeft) : rectTransform.anchoredPosition.x;
         rectTransform.anchoredPosition = new Vector2(newCursorXValue, rectTransform.anchoredPosition.y);
+    }
+
+    private float ChangeActiveMonitor(bool moveLeft) {
+        currentScreen = monitorScreens[currentScreenIndex].GetComponent<RectTransform>();
+        this.gameObject.transform.SetParent(currentScreen, false);
+        return moveLeft ? currentScreen.rect.width / 2 : -currentScreen.rect.width / 2;
     }
 
     public static bool RectTransformContainsAnother(RectTransform rectTransform, RectTransform another)
