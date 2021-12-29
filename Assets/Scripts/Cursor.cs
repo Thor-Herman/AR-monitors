@@ -11,7 +11,7 @@ public class Cursor : MonoBehaviour
     int currentScreenIndex = 0; // Index of current screen
 
     RectTransform rectTransform;
-    RectTransform currentScreen;
+    RectTransform newScreen;
     Collider boxCollider;
     [SerializeField] float mouseSpeed = 1.5f;
     bool mouseOnThisCanvas = true;
@@ -20,7 +20,7 @@ public class Cursor : MonoBehaviour
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        currentScreen = monitorScreens[currentScreenIndex].GetComponent<RectTransform>();
+        newScreen = monitorScreens[currentScreenIndex].GetComponent<RectTransform>();
         boxCollider = GetComponent<BoxCollider>();
         boxCollider.enabled = false;
     }
@@ -31,13 +31,28 @@ public class Cursor : MonoBehaviour
         float mouseX = Input.GetAxisRaw("Mouse X");
         float mouseY = Input.GetAxisRaw("Mouse Y");
         bool mousePressedDown = Input.GetButtonDown("Fire1");
-        rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x + mouseX * mouseSpeed, rectTransform.anchoredPosition.y + mouseY * mouseSpeed);
+        SetNewAnchorPos(rectTransform.anchoredPosition.x + mouseX * mouseSpeed, rectTransform.anchoredPosition.y + mouseY * mouseSpeed);
         if (mouseX != 0)  // Mouse moved horizontally. Might have moved out of screen. 
             HandleMouseMonitorTransitions();
         if (mousePressedDown)
         {
             StartCoroutine(MouseClick());
         }
+    }
+
+    private void SetNewAnchorPos(float x, float y)
+    {
+        float rightSideBoundary = newScreen.rect.width / 2;
+        float leftSideBoundary = -rightSideBoundary;
+        float topBoundary = newScreen.rect.width / 2;
+        float bottomBoundary = -topBoundary;
+
+        float xDelta = 1f; // Used so that the cursor can be outside of the boundary for HandleMouseMonitorTransitions
+
+        float newXValue = Mathf.Clamp(x, leftSideBoundary - xDelta, rightSideBoundary + xDelta);
+        float newYValue = Mathf.Clamp(y, bottomBoundary, topBoundary);
+
+        rectTransform.anchoredPosition = new Vector2(newXValue, newYValue);
     }
 
     private IEnumerator MouseClick()
@@ -49,9 +64,10 @@ public class Cursor : MonoBehaviour
 
     private void HandleMouseMonitorTransitions()
     {
-        float rightSideBoundary = currentScreen.rect.width / 2;
+        float rightSideBoundary = newScreen.rect.width / 2;
         float leftSideBoundary = -rightSideBoundary;
         float x = rectTransform.localPosition.x;
+
         bool isWithinScreenBoundary = x > leftSideBoundary && x < rightSideBoundary;
         if (isWithinScreenBoundary) return;
 
@@ -62,18 +78,19 @@ public class Cursor : MonoBehaviour
     private void UpdateMonitor(bool moveLeft)
     {
         int oldCurrentScreenIndex = currentScreenIndex;
+
         if (moveLeft && currentScreenIndex != 0) currentScreenIndex--;
         else if (!moveLeft && currentScreenIndex < monitorScreens.Length - 1) currentScreenIndex++;
 
         bool changedScreen = oldCurrentScreenIndex != currentScreenIndex;
-        float newCursorXValue = changedScreen ? ChangeActiveMonitor(moveLeft) : rectTransform.anchoredPosition.x;
-        rectTransform.anchoredPosition = new Vector2(newCursorXValue, rectTransform.anchoredPosition.y);
+        if (changedScreen) ChangeActiveMonitor(moveLeft);
     }
 
-    private float ChangeActiveMonitor(bool moveLeft) {
-        currentScreen = monitorScreens[currentScreenIndex].GetComponent<RectTransform>();
-        this.gameObject.transform.SetParent(currentScreen, false);
-        return moveLeft ? currentScreen.rect.width / 2 : -currentScreen.rect.width / 2;
+    private void ChangeActiveMonitor(bool moveLeft) {
+            newScreen = monitorScreens[currentScreenIndex].GetComponent<RectTransform>();
+            this.gameObject.transform.SetParent(newScreen, false);
+            float newCursorXValue = moveLeft ? newScreen.rect.width / 2 : -newScreen.rect.width / 2;
+            SetNewAnchorPos(newCursorXValue, rectTransform.anchoredPosition.y);
     }
 
     public static bool RectTransformContainsAnother(RectTransform rectTransform, RectTransform another)
