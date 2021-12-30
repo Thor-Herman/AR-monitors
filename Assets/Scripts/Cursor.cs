@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Cursor : MonoBehaviour
 {
@@ -16,25 +17,34 @@ public class Cursor : MonoBehaviour
     [SerializeField] float mouseSpeed = 1.5f;
     bool mouseOnThisCanvas = true;
 
+    float prevMouseX, prevMouseY;
+
     // Start is called before the first frame update
     void Start()
     {
+        Input.simulateMouseWithTouches = false;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         rectTransform = GetComponent<RectTransform>();
         newScreen = monitorScreens[currentScreenIndex].GetComponent<RectTransform>();
         boxCollider = GetComponent<BoxCollider>();
         boxCollider.enabled = false;
+        prevMouseX = Input.mousePosition.x;
+        prevMouseY = Input.mousePosition.y;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float mouseX = Input.GetAxisRaw("Mouse X");
-        float mouseY = Input.GetAxisRaw("Mouse Y");
-        bool mousePressedDown = Input.GetButtonDown("Fire1");
+        // MouseCaptureController.CaptureMouse(captureMouse());
+        float mouseX = Input.mousePosition.x - prevMouseX;
+        float mouseY = Input.mousePosition.y - prevMouseY;
+        prevMouseX = Input.mousePosition.x;
+        prevMouseY = Input.mousePosition.y;
+
         SetNewAnchorPos(rectTransform.anchoredPosition.x + mouseX * mouseSpeed, rectTransform.anchoredPosition.y + mouseY * mouseSpeed);
         if (mouseX != 0)  // Mouse moved horizontally. Might have moved out of screen. 
             HandleMouseMonitorTransitions();
-        if (mousePressedDown)
+        if (Input.GetMouseButtonDown(0))
         {
             StartCoroutine(MouseClick());
         }
@@ -86,11 +96,12 @@ public class Cursor : MonoBehaviour
         if (changedScreen) ChangeActiveMonitor(moveLeft);
     }
 
-    private void ChangeActiveMonitor(bool moveLeft) {
-            newScreen = monitorScreens[currentScreenIndex].GetComponent<RectTransform>();
-            this.gameObject.transform.SetParent(newScreen, false);
-            float newCursorXValue = moveLeft ? newScreen.rect.width / 2 : -newScreen.rect.width / 2;
-            SetNewAnchorPos(newCursorXValue, rectTransform.anchoredPosition.y);
+    private void ChangeActiveMonitor(bool moveLeft)
+    {
+        newScreen = monitorScreens[currentScreenIndex].GetComponent<RectTransform>();
+        this.gameObject.transform.SetParent(newScreen, false);
+        float newCursorXValue = moveLeft ? newScreen.rect.width / 2 : -newScreen.rect.width / 2;
+        SetNewAnchorPos(newCursorXValue, rectTransform.anchoredPosition.y);
     }
 
     public static bool RectTransformContainsAnother(RectTransform rectTransform, RectTransform another)

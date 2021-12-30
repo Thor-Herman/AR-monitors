@@ -9,9 +9,12 @@ EditorBuildSettings:
     path: Assets/Samples/Aryzon MR Headset Plugin/3.0.5/Aryzon Examples/Scenes/Rotational
       Tracking/Rotational Tracking.unity
     guid: bc073b9ec0589466e898fbe62eb19c07
-  - enabled: 1
+  - enabled: 0
     path: Assets/Samples/Aryzon MR Headset Plugin/3.0.5/Aryzon Examples/Scenes/ARFoundation/ARFoundation.unity
     guid: 9570c93186c4d4883b5905663c930386
+  - enabled: 1
+    path: Assets/Scenes/ThorScene.unity
+    guid: 1cf979b8f4895e740b0004454b1d6f51
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 744b813df90924c169af73489b8325de,
       type: 2}

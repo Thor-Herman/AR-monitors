@@ -749,20 +749,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 635241824}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &329724584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 329724580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding: {x: 0, y: 0, z: 0, w: 0}
-  m_Softness: {x: 0, y: 0}
 --- !u!1 &460418336 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 169129300907279272, guid: 749352d519da6a9429228113139e0ab3,
@@ -1680,20 +1666,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 8552731194355101235}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1045815738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1045815733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding: {x: 0, y: 0, z: 0, w: 0}
-  m_Softness: {x: 0, y: 0}
 --- !u!1 &1172135228 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6713765991123547052, guid: 9ab9ce51edb034ddbb22ddd003b53f29,
@@ -7835,7 +7807,7 @@ PrefabInstance:
     - target: {fileID: 5691582783975966532, guid: 853c5ed3425aae14497e65497b84cecc,
         type: 3}
       propertyPath: mouseSpeed
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5691582783975966532, guid: 853c5ed3425aae14497e65497b84cecc,
         type: 3}
