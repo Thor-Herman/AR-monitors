@@ -23,7 +23,7 @@ public class Cursor : MonoBehaviour
     void Start()
     {
         Input.simulateMouseWithTouches = false;
-        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        // UnityEngine.Cursor.lockState = CursorLockMode.Locked; !!!! ENABLE THIS LINE WHEN PORTING TO MOBILE
         rectTransform = GetComponent<RectTransform>();
         newScreen = monitorScreens[currentScreenIndex].GetComponent<RectTransform>();
         boxCollider = GetComponent<BoxCollider>();
