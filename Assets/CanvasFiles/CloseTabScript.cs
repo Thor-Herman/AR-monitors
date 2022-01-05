@@ -21,6 +21,7 @@ public class CloseTabScript : AryzonRaycastInteractable
         if (!isNewTab)
         {
             gameObject.transform.parent.parent.gameObject.SetActive(false);
+            if (menuCanvas == null) menuCanvas = GameObject.Find("CanvasMenu");
             menuCanvas.SetActive(true);
         }
         else
