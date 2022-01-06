@@ -7,12 +7,14 @@ public class CloseTabScript : AryzonRaycastInteractable
 {
     public bool isNewTab;
     private GameObject menuCanvas;
+    private GameObject parentCanvas;
     public GameObject displayContent;
 
     protected override void Awake()
     {
         base.Awake();
-        menuCanvas = GameObject.Find("CanvasMenu");
+        parentCanvas = gameObject.transform.parent.parent.gameObject;
+        menuCanvas = parentCanvas.transform.parent.Find("CanvasMenu").gameObject;
         Debug.Log(gameObject.transform.parent.parent.gameObject);
     }
 
@@ -20,13 +22,13 @@ public class CloseTabScript : AryzonRaycastInteractable
     {
         if (!isNewTab)
         {
-            gameObject.transform.parent.parent.gameObject.SetActive(false);
-            if (menuCanvas == null) menuCanvas = GameObject.Find("CanvasMenu");
+            parentCanvas.SetActive(false);
+            if (menuCanvas == null) menuCanvas = parentCanvas.transform.parent.Find("CanvasMenu").gameObject;
             menuCanvas.SetActive(true);
         }
         else
         {
-            gameObject.transform.parent.gameObject.SetActive(false);
+            transform.parent.gameObject.SetActive(false);
             displayContent.transform.gameObject.SetActive(true);
         }
     }

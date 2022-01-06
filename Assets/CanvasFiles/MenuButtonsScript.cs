@@ -10,7 +10,7 @@ public class MenuButtonsScript : AryzonRaycastInteractable
     protected override void Awake()
     {
         base.Awake();
-        menuCanvas = GameObject.Find("CanvasMenu");
+        menuCanvas = transform.parent.parent.gameObject;
         targetCanvas.SetActive(false);
     }
 
