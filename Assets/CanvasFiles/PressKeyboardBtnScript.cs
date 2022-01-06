@@ -2,75 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Aryzon;
 
 
-namespace Aryzon
+public class PressKeyboardBtnScript : AryzonRaycastInteractable
 {
-    public class PressKeyboardBtnScript : MonoBehaviour
+    private Text textBox;
+    private string text;
+
+    protected override void Down()
     {
-        private AryzonRaycastObject raycastObject;
-        private Text textBox;
-        private string text;
+        // GameObject.Find doesn't work as intended when there are 2+ instances with the same name. 
+        textBox = transform.parent.parent.Find("Result Box").Find("ResultTextNote").gameObject.GetComponent<Text>();
 
-        private void Awake()
+        if (gameObject.name.Equals("space"))
         {
-            raycastObject = gameObject.GetComponent<AryzonRaycastObject>();
-
+            textBox.text = textBox.text + " ";
         }
-
-        private void OnEnable()
+        else if (!gameObject.name.Equals("backspace"))
         {
-            if (raycastObject)
-            {
-                raycastObject.OnPointerOff.AddListener(Off);
-                raycastObject.OnPointerOver.AddListener(Over);
-                raycastObject.OnPointerUp.AddListener(Clicked);
-                raycastObject.OnPointerDown.AddListener(Down);
-            }
+            textBox.text = textBox.text + gameObject.name;
         }
-
-        private void OnDisable()
+        else
         {
-            if (raycastObject)
-            {
-                raycastObject.OnPointerOff.RemoveListener(Off);
-                raycastObject.OnPointerOver.RemoveListener(Over);
-                raycastObject.OnPointerUp.RemoveListener(Clicked);
-                raycastObject.OnPointerDown.RemoveListener(Down);
-            }
-        }
-
-        private void Off()
-        {
-
-        }
-
-        private void Over()
-        {
-
-        }
-
-        private void Down()
-        {
-            textBox = GameObject.Find("ResultTextNote").GetComponent<Text>();
-
-            if (gameObject.name.Equals("space"))
-            {
-                textBox.text = textBox.text + " ";
-            }
-            else if (!gameObject.name.Equals("backspace"))
-            {
-                textBox.text = textBox.text + gameObject.name;
-            } 
-            else
-            {
-                textBox.text = textBox.text.Remove(textBox.text.Length - 1);
-            }
-
-        }
-        private void Clicked()
-        {
-
+            textBox.text = textBox.text.Remove(textBox.text.Length - 1);
         }
     }
 }

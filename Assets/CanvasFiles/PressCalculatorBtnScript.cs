@@ -2,69 +2,26 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using Aryzon;
 
-namespace Aryzon
+public class PressCalculatorBtnScript : AryzonRaycastInteractable
 {
-    public class PressCalculatorBtnScript : MonoBehaviour
+    private DoCalculationsScript calculationScript;
+
+    private void Start()
     {
-        private AryzonRaycastObject raycastObject;
-        private DoCalculationsScript calculationScript;
+        calculationScript = transform.parent.parent.Find("Result Box").Find("ResultText").GetComponent<DoCalculationsScript>();
+    }
 
-        private void Awake()
+    protected override void Down()
+    {
+        if (gameObject.name.Equals("=") || gameObject.name.Equals("+") || gameObject.name.Equals("-") || gameObject.name.Equals("*") || gameObject.name.Equals("/") || gameObject.name.Equals(","))
         {
-            raycastObject = gameObject.GetComponent<AryzonRaycastObject>();
-
+            calculationScript.ReceiveSymbol(gameObject.name);
         }
-        private void Start()
+        else
         {
-            calculationScript = GameObject.Find("ResultText").GetComponent<DoCalculationsScript>();
-        }
-        private void OnEnable()
-        {
-            if (raycastObject)
-            {
-                raycastObject.OnPointerOff.AddListener(Off);
-                raycastObject.OnPointerOver.AddListener(Over);
-                raycastObject.OnPointerUp.AddListener(Clicked);
-                raycastObject.OnPointerDown.AddListener(Down);
-            }
-        }
-
-        private void OnDisable()
-        {
-            if (raycastObject)
-            {
-                raycastObject.OnPointerOff.RemoveListener(Off);
-                raycastObject.OnPointerOver.RemoveListener(Over);
-                raycastObject.OnPointerUp.RemoveListener(Clicked);
-                raycastObject.OnPointerDown.RemoveListener(Down);
-            }
-        }
-
-        private void Off()
-        {
-
-        }
-
-        private void Over()
-        {
-
-        }
-
-        private void Down()
-        {
-            if (gameObject.name.Equals("=") || gameObject.name.Equals("+") || gameObject.name.Equals("-") || gameObject.name.Equals("*") || gameObject.name.Equals("/") || gameObject.name.Equals(","))
-            {
-                calculationScript.ReceiveSymbol(gameObject.name);
-            }
-            else
-            {
-                calculationScript.ReceiveNumber(gameObject.name);
-            }
-        }
-        private void Clicked()
-        {
-
+            calculationScript.ReceiveNumber(gameObject.name);
         }
     }
 }
