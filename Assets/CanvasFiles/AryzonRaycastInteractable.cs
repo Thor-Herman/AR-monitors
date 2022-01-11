@@ -55,6 +55,10 @@ namespace Aryzon
 
         }
 
+        protected virtual void Up() {
+            
+        }
+
         protected virtual void Clicked()
         {
 
@@ -65,6 +69,13 @@ namespace Aryzon
             if (other.CompareTag("Mouse")) // Called when user clicks on this part
             {
                 Down();
+            }
+        }
+
+        protected virtual void OnTriggerExit(Collider other) {
+            if (other.CompareTag("Mouse")) // Called when user clicks on this part
+            {
+                Up();
             }
         }
     }

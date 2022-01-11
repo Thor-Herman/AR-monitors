@@ -35,8 +35,19 @@ public class ScrollPdfScript : AryzonRaycastInteractable
     protected override void Over()
     {
         isPressing = true;
-
     }
+
+    protected override void Down()
+    {
+        isPressing = true;
+    }
+
+    protected override void Up()
+    {
+        isPressing = false;
+    }
+
+
     private void FixedUpdate()
     {
         if (isPressing)

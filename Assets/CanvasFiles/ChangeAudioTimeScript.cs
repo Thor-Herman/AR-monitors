@@ -7,7 +7,7 @@ public class ChangeAudioTimeScript : AryzonRaycastInteractable
 {
     private AudioSource audioPlayer;
     private RectTransform progressBar; //world coordinates from 0.0 to 0.7
-    private Text currentSongTime;
+    private Text currentSongTime;  
     int maxSeconds = 256;
     float maxWidth = 100.0f;
     float currentScale;
