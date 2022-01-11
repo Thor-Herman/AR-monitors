@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Aryzon
   - Mouse
+  - FriendProfile
+  - MouseUp
   layers:
   - Default
   - TransparentFX

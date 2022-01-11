@@ -755,6 +755,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3229095057701440085, guid: 9ab9ce51edb034ddbb22ddd003b53f29,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886688732576762176, guid: 9ab9ce51edb034ddbb22ddd003b53f29,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633030327295846021, guid: 9ab9ce51edb034ddbb22ddd003b53f29,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6713765991924245657, guid: 9ab9ce51edb034ddbb22ddd003b53f29,
         type: 3}
       propertyPath: trackingEngine
@@ -763,7 +778,7 @@ PrefabInstance:
     - target: {fileID: 6713765991924245670, guid: 9ab9ce51edb034ddbb22ddd003b53f29,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6713765991924245670, guid: 9ab9ce51edb034ddbb22ddd003b53f29,
         type: 3}
@@ -1510,7 +1525,7 @@ RectTransform:
   - {fileID: 108679725}
   - {fileID: 1748196111}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6717,6 +6732,26 @@ Transform:
   m_Father: {fileID: 1795543708}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1702194489 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9153869281592510258, guid: d90f4e09aa13b894ab04b3edf03c9b68,
+    type: 3}
+  m_PrefabInstance: {fileID: 5505548277083056989}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1702194490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702194489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &1748196110 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6556383240235910578, guid: d90f4e09aa13b894ab04b3edf03c9b68,
@@ -6775,6 +6810,7 @@ GameObject:
   - component: {fileID: 1799260234}
   - component: {fileID: 1799260233}
   - component: {fileID: 1799260232}
+  - component: {fileID: 1799260236}
   m_Layer: 0
   m_Name: AR Camera
   m_TagString: Untagged
@@ -6882,6 +6918,14 @@ Transform:
   m_Father: {fileID: 234384038}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &1799260236
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799260230}
+  m_Enabled: 1
 --- !u!1 &1805189305
 GameObject:
   m_ObjectHideFlags: 0
@@ -7625,16 +7669,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5691582783975966529, guid: 853c5ed3425aae14497e65497b84cecc,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5691582783975966529, guid: 853c5ed3425aae14497e65497b84cecc,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5691582783975966529, guid: 853c5ed3425aae14497e65497b84cecc,
-        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -7692,21 +7726,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5691582783975966532, guid: 853c5ed3425aae14497e65497b84cecc,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5691582783975966532, guid: 853c5ed3425aae14497e65497b84cecc,
-        type: 3}
-      propertyPath: mouseSpeed
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 5691582783975966532, guid: 853c5ed3425aae14497e65497b84cecc,
-        type: 3}
-      propertyPath: monitorScreens.Array.size
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5691582783975966532, guid: 853c5ed3425aae14497e65497b84cecc,
         type: 3}

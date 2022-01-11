@@ -5,31 +5,36 @@ using UnityEngine.UI;
 using Aryzon;
 public class ChangeAudioTimeScript : AryzonRaycastInteractable
 {
-    private AudioSource audioPlayer;
-    private RectTransform progressBar; //world coordinates from 0.0 to 0.7
-    private Text currentSongTime;  
+    public AudioSource audioSource;
+    public RectTransform progressBarRectTransform; //world coordinates from 0.0 to 0.7
+    public Text currentSongTimeText;
+    private Text currentSongTime;
     int maxSeconds = 256;
     float maxWidth = 100.0f;
     float currentScale;
-    Vector3 hitPos;
+    float hitPos;
 
     public void ReceiveHitPosition(Vector3 hitPos)
     {
-        this.hitPos = hitPos;
+        this.hitPos = hitPos.x;
     }
-    protected override void Awake()
-    {
-        base.Awake();
-        audioPlayer = GameObject.Find("AudioSource").GetComponent<AudioSource>();
-        progressBar = (RectTransform)GameObject.Find("ProgressBar").GetComponent<Transform>().transform;
-        currentSongTime = GameObject.Find("CurrentSongTime").GetComponent<Text>();
-    }
+
     protected override void Down()
     {
-        float relativePosition = hitPos.x / 0.7f;
+        Debug.Log($"Current position {hitPos}");
+        float relativePosition = hitPos / 0.7f;
         int seconds = (int)(relativePosition * maxSeconds);
-        audioPlayer.time = seconds;
+        audioSource.time = seconds;
         currentScale = seconds * maxWidth / maxSeconds;
-        progressBar.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, currentScale);
+        progressBarRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, currentScale);
+    }
+
+    protected override void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Mouse"))
+        {
+            this.hitPos = .9f + other.gameObject.transform.position.x; // For some reason it's inverted?
+            Down();
+        }
     }
 }
