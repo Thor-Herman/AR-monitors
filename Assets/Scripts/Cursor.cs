@@ -9,15 +9,15 @@ public class Cursor : MonoBehaviour
 
     [Tooltip("First monitor in array will be the default starting one.")]
     [SerializeField] GameObject[] monitorScreens;
+    [SerializeField] Collider downTrigger, upTrigger;
     int currentScreenIndex = 0; // Index of current screen
 
     RectTransform rectTransform;
     RectTransform newScreen;
-    Collider boxCollider;
     [SerializeField] float mouseSpeed = 1.5f;
-    bool mouseOnThisCanvas = true;
 
     float prevMouseX, prevMouseY;
+    bool pressedMouseDown;
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +26,8 @@ public class Cursor : MonoBehaviour
         // UnityEngine.Cursor.lockState = CursorLockMode.Locked; !!!! ENABLE THIS LINE WHEN PORTING TO MOBILE
         rectTransform = GetComponent<RectTransform>();
         newScreen = monitorScreens[currentScreenIndex].GetComponent<RectTransform>();
-        boxCollider = GetComponent<BoxCollider>();
-        boxCollider.enabled = false;
+        upTrigger.enabled = false;
+        downTrigger.enabled = false;
         prevMouseX = Input.mousePosition.x;
         prevMouseY = Input.mousePosition.y;
     }
@@ -46,7 +46,13 @@ public class Cursor : MonoBehaviour
             HandleMouseMonitorTransitions();
         if (Input.GetMouseButtonDown(0))
         {
-            StartCoroutine(MouseClick());
+            pressedMouseDown = true;
+            StartCoroutine(MouseClick(downTrigger));
+        }
+        else if (!Input.GetMouseButton(0) && pressedMouseDown)
+        {
+            pressedMouseDown = false;
+            StartCoroutine(MouseClick(upTrigger));
         }
     }
 
@@ -65,11 +71,11 @@ public class Cursor : MonoBehaviour
         rectTransform.anchoredPosition = new Vector2(newXValue, newYValue);
     }
 
-    private IEnumerator MouseClick()
+    private IEnumerator MouseClick(Collider trigger)
     {
-        boxCollider.enabled = true;
+        trigger.enabled = true;
         yield return new WaitForSeconds(0.1f);
-        boxCollider.enabled = false;
+        trigger.enabled = false;
     }
 
     private void HandleMouseMonitorTransitions()
