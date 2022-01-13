@@ -17,6 +17,7 @@ public class PlaySongScript : AryzonRaycastInteractable
     int maxSeconds = 256;
     float maxWidth = 100.0f;
     float currentScale;
+    bool ended = false;
 
 
     protected override void Awake()
@@ -69,12 +70,31 @@ public class PlaySongScript : AryzonRaycastInteractable
         if (displayTime)
         {
             int t = (int)audioPlayer.time;
-            int s = t % 60;
-            if (s < 10)
+            if (t == 256 && !ended)
             {
-                currentSongTime.GetComponent<Text>().text = t / 60 + ":0" + s;
+                ended = true;
             }
-            else { currentSongTime.GetComponent<Text>().text = t / 60 + ":" + s; }
+            else if (t == 256 && ended)
+            {
+                audioPlayer.Pause();
+                currentSongTime.GetComponent<Text>().text = "0:00";
+                audioPlayer.time = 0;
+                gameObject.GetComponent<Image>().sprite = playBtn;
+                otherBtn.GetComponent<Image>().sprite = playBtn;
+                ended = false;
+            }
+            else
+            {
+                int s = t % 60;
+                if (s < 10)
+                {
+                    currentSongTime.GetComponent<Text>().text = t / 60 + ":0" + s;
+                }
+                else 
+                { 
+                    currentSongTime.GetComponent<Text>().text = t / 60 + ":" + s; 
+                }
+            }
 
             currentScale = t * maxWidth / maxSeconds;
             progressBar.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, currentScale);
