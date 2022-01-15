@@ -633,10 +633,10 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    1: ARYZON_ARFOUNDATION
-    4: ARYZON_ARFOUNDATION
-    7: ARYZON_ARFOUNDATION
-    14: ARYZON_ARFOUNDATION
+    1: 
+    4: 
+    7: 
+    14: 
   additionalCompilerArguments: {}
   platformArchitecture:
     iPhone: 1
@@ -660,7 +660,7 @@ PlayerSettings:
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: com.unity.template.ar
-  metroPackageVersion: 
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -668,7 +668,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: com.unity.template.ar
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: AR Monitors
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
