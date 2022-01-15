@@ -6,7 +6,7 @@ using Aryzon;
 public class ScrollPdfScript : AryzonRaycastInteractable
 {
 
-    private GameObject pdfImage;
+    public GameObject pdfImage;
     private GameObject currentScrollBar;
     private bool pressedUp;
     private bool isPressing;
@@ -16,7 +16,7 @@ public class ScrollPdfScript : AryzonRaycastInteractable
     protected override void Awake()
     {
         base.Awake();
-        pdfImage = GameObject.Find("PdfImage");
+        //pdfImage = GameObject.Find("PdfImage");
         currentScrollBar = GameObject.Find("CurrentPositionScrollBar");
     }
 
@@ -27,15 +27,15 @@ public class ScrollPdfScript : AryzonRaycastInteractable
         base.OnEnable();
     }
 
-    protected override void Off()
-    {
-        isPressing = false;
-    }
+    //protected override void Off()
+    //{
+    //    isPressing = false;
+    //}
 
-    protected override void Over()
-    {
-        isPressing = true;
-    }
+    //protected override void Over()
+    //{
+    //    isPressing = true;
+    //}
 
     protected override void Down()
     {

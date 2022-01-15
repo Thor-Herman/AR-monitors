@@ -54,7 +54,8 @@ public class AryzonReticle : MonoBehaviour, IAryzonEventHandler
     private AryzonRaycastObject previousRaycastObject;
 
     // script for audio changing ----------------------
-    public ChangeAudioTimeScript audioTimeScript;
+    public ChangeAudioTimeScript audioTimeScript1;
+    public ChangeAudioTimeScript audioTimeScript2;
     // ------------------------------------------------
 
     private void OnEnable()
@@ -252,7 +253,8 @@ public class AryzonReticle : MonoBehaviour, IAryzonEventHandler
             previousCollider = hit.collider;
             // If clicking the audio progress bar sends the position to calculate the time
             if (hit.collider.gameObject.name.Equals("AudioBarCollider")) {
-                audioTimeScript.ReceiveHitPosition(hit.point);
+                audioTimeScript1.ReceiveHitPosition(hit.point);
+                audioTimeScript2.ReceiveHitPosition(hit.point);
             }
         }
         else
