@@ -13,6 +13,7 @@ public class ChangeAudioTimeScript : AryzonRaycastInteractable
     float maxWidth = 100.0f;
     float currentScale;
     float hitPos;
+    public int screenIndex;
 
     public void ReceiveHitPosition(Vector3 hitPos)
     {
@@ -22,7 +23,14 @@ public class ChangeAudioTimeScript : AryzonRaycastInteractable
     protected override void Down()
     {
         Debug.Log($"Current position {hitPos}");
-        float relativePosition = hitPos / 0.7f;
+        float relativePosition = 0.0f;
+        if (screenIndex == 1)
+        {
+            relativePosition = hitPos / 0.7f;
+        }else if(screenIndex == 2)
+        {
+            relativePosition = (hitPos - 2.5f) / 0.8f;
+        }
         int seconds = (int)(relativePosition * maxSeconds);
         audioSource.time = seconds;
         currentScale = seconds * maxWidth / maxSeconds;
