@@ -15,7 +15,7 @@ public class Cursor : MonoBehaviour
     int currentScreenIndex = 0; // Index of current screen
 
     RectTransform rectTransform;
-    RectTransform newScreen;
+    RectTransform screen;
     [SerializeField] float mouseSpeed = 1.5f;
 
     float prevMouseX, prevMouseY;
@@ -29,7 +29,6 @@ public class Cursor : MonoBehaviour
         Input.simulateMouseWithTouches = false;
         //UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         rectTransform = GetComponent<RectTransform>();
-        newScreen = monitorScreens[currentScreenIndex].GetComponent<RectTransform>();
         upTrigger.enabled = false;
         downTrigger.enabled = false;
         prevMouseX = Input.mousePosition.x;
@@ -39,6 +38,14 @@ public class Cursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (MonitorController.activeMonitors.Count == 0) return; // Don't do anything with mouse when there are no screens
+
+        if (screen == null) // Previous frame there were no monitors. Now first monitor is enabled.
+        {
+            screen = monitorScreens[currentScreenIndex].GetComponent<RectTransform>();
+            this.gameObject.transform.SetParent(screen, false);
+        }
+
         // MouseCaptureController.CaptureMouse(captureMouse());
         float mouseX = Input.mousePosition.x - prevMouseX;
         float mouseY = Input.mousePosition.y - prevMouseY;
@@ -58,20 +65,13 @@ public class Cursor : MonoBehaviour
             pressedMouseDown = false;
             StartCoroutine(MouseClick(upTrigger));
         }
-
-        //trackableManager = GameObject.Find("AR Session Origin").GetComponent<ARTrackedImageManager>();
-
-        // targetPrefab = trackableManager.trackedImagePrefab;
-
-
-        if (MonitorController.activeMonitors.Count == 3) monitorScreens[2] = MonitorController.activeMonitors[2].gameObject;
     }
 
     private void SetNewAnchorPos(float x, float y)
     {
-        float rightSideBoundary = newScreen.rect.width / 2;
+        float rightSideBoundary = screen.rect.width / 2;
         float leftSideBoundary = -rightSideBoundary;
-        float topBoundary = newScreen.rect.width / 2;
+        float topBoundary = screen.rect.width / 2;
         float bottomBoundary = -topBoundary;
 
         float xDelta = 1f; // Used so that the cursor can be outside of the boundary for HandleMouseMonitorTransitions
@@ -91,7 +91,7 @@ public class Cursor : MonoBehaviour
 
     private void HandleMouseMonitorTransitions()
     {
-        float rightSideBoundary = newScreen.rect.width / 2;
+        float rightSideBoundary = screen.rect.width / 2;
         float leftSideBoundary = -rightSideBoundary;
         float x = rectTransform.localPosition.x;
 
@@ -107,7 +107,7 @@ public class Cursor : MonoBehaviour
         int oldCurrentScreenIndex = currentScreenIndex;
 
         if (moveLeft && currentScreenIndex != 0) currentScreenIndex--;
-        else if (!moveLeft && currentScreenIndex < monitorScreens.Length - 1 && monitorScreens[currentScreenIndex + 1] != null) currentScreenIndex++;
+        else if (!moveLeft && currentScreenIndex < MonitorController.activeMonitors.Count - 1) currentScreenIndex++;
 
         bool changedScreen = oldCurrentScreenIndex != currentScreenIndex;
         if (changedScreen) ChangeActiveMonitor(moveLeft);
@@ -115,9 +115,9 @@ public class Cursor : MonoBehaviour
 
     private void ChangeActiveMonitor(bool moveLeft)
     {
-        newScreen = monitorScreens[currentScreenIndex].GetComponent<RectTransform>();
-        this.gameObject.transform.SetParent(newScreen, false);
-        float newCursorXValue = moveLeft ? newScreen.rect.width / 2 : -newScreen.rect.width / 2;
+        screen = MonitorController.activeMonitors[currentScreenIndex].GetComponent<RectTransform>();
+        this.gameObject.transform.SetParent(screen, false);
+        float newCursorXValue = moveLeft ? screen.rect.width / 2 : -screen.rect.width / 2;
         SetNewAnchorPos(newCursorXValue, rectTransform.anchoredPosition.y);
     }
 
