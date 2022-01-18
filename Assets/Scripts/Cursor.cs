@@ -59,18 +59,13 @@ public class Cursor : MonoBehaviour
             StartCoroutine(MouseClick(upTrigger));
         }
 
-        // trackableManager = GameObject.Find("AR Session Origin").GetComponent<ARTrackedImageManager>();
+        //trackableManager = GameObject.Find("AR Session Origin").GetComponent<ARTrackedImageManager>();
 
         // targetPrefab = trackableManager.trackedImagePrefab;
 
-        // if (targetPrefab != null)
-        // {
-        //     Debug.Log("Target prefab not null");
-        //     monitorScreens[2] = targetPrefab;
-        // }
-        if (GameObject.Find("ARTrackedImage") != null) {
-            rectTransform.sizeDelta = new Vector2(150, 150);
-        }
+
+        Debug.Log(MonitorController.activeMonitors[2]);
+        monitorScreens[2] = MonitorController.activeMonitors[2];
     }
 
     private void SetNewAnchorPos(float x, float y)
