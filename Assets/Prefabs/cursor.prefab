@@ -192,6 +192,8 @@ MonoBehaviour:
   monitorScreens:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   downTrigger: {fileID: 559890602}
   upTrigger: {fileID: 2064028009}
   mouseSpeed: 0.01

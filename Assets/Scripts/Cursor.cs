@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
 
 public class Cursor : MonoBehaviour
 {
@@ -18,12 +20,14 @@ public class Cursor : MonoBehaviour
 
     float prevMouseX, prevMouseY;
     bool pressedMouseDown;
+    ARTrackedImageManager trackableManager;
+    GameObject targetPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
         Input.simulateMouseWithTouches = false;
-        // UnityEngine.Cursor.lockState = CursorLockMode.Locked; !!!! ENABLE THIS LINE WHEN PORTING TO MOBILE
+        //UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         rectTransform = GetComponent<RectTransform>();
         newScreen = monitorScreens[currentScreenIndex].GetComponent<RectTransform>();
         upTrigger.enabled = false;
@@ -53,6 +57,15 @@ public class Cursor : MonoBehaviour
         {
             pressedMouseDown = false;
             StartCoroutine(MouseClick(upTrigger));
+        }
+
+        trackableManager = GameObject.Find("AR Session Origin").GetComponent<ARTrackedImageManager>();
+
+        targetPrefab = trackableManager.trackedImagePrefab;
+
+        if(targetPrefab != null)
+        {
+            monitorScreens[2] = targetPrefab;
         }
     }
 
