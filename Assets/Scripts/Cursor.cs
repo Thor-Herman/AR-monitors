@@ -8,9 +8,6 @@ using UnityEngine.XR.ARSubsystems;
 
 public class Cursor : MonoBehaviour
 {
-
-    [Tooltip("First monitor in array will be the default starting one.")]
-    [SerializeField] GameObject[] monitorScreens;
     [SerializeField] Collider downTrigger, upTrigger;
     int currentScreenIndex = 0; // Index of current screen
 
@@ -21,7 +18,6 @@ public class Cursor : MonoBehaviour
     float prevMouseX, prevMouseY;
     bool pressedMouseDown;
     ARTrackedImageManager trackableManager;
-    GameObject targetPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +38,7 @@ public class Cursor : MonoBehaviour
 
         if (screen == null) // Previous frame there were no monitors. Now first monitor is enabled.
         {
-            screen = monitorScreens[currentScreenIndex].GetComponent<RectTransform>();
+            screen = MonitorController.activeMonitors[currentScreenIndex].gameObject.GetComponent<RectTransform>(); // TODO: MIGHT NEED .gameObject here
             this.gameObject.transform.SetParent(screen, false);
         }
 
