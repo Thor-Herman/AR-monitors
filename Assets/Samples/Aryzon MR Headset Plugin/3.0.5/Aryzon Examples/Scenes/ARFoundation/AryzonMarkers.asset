@@ -33,7 +33,7 @@ MonoBehaviour:
       m_GuidHigh: 2770761289249466920
     m_Size: {x: 0.192, y: 0.192}
     m_SpecifySize: 1
-    m_Name: AryzonV3_MarkerImage
+    m_Name: Left
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 4680873592185567729
@@ -43,7 +43,7 @@ MonoBehaviour:
       m_GuidHigh: 13675583863329467288
     m_Size: {x: 0.14, y: 0.14}
     m_SpecifySize: 1
-    m_Name: AryzonSmall_MarkerImage
+    m_Name: Right
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 5407918838128871935
@@ -63,5 +63,5 @@ MonoBehaviour:
       m_GuidHigh: 7494349777543433465
     m_Size: {x: 0, y: 0}
     m_SpecifySize: 0
-    m_Name: a-guide-to-qr-codes-and-how-to-scan-qr-codes-2
+    m_Name: Middle
     m_Texture: {fileID: 0}
