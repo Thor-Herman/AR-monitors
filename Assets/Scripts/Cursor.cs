@@ -64,8 +64,7 @@ public class Cursor : MonoBehaviour
         // targetPrefab = trackableManager.trackedImagePrefab;
 
 
-        Debug.Log(MonitorController.activeMonitors[2]);
-        monitorScreens[2] = MonitorController.activeMonitors[2];
+        if (MonitorController.activeMonitors.Count == 3) monitorScreens[2] = MonitorController.activeMonitors[2].gameObject;
     }
 
     private void SetNewAnchorPos(float x, float y)
