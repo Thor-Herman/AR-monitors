@@ -54,6 +54,19 @@ public class Cursor : MonoBehaviour
             pressedMouseDown = false;
             StartCoroutine(MouseClick(upTrigger));
         }
+
+        // trackableManager = GameObject.Find("AR Session Origin").GetComponent<ARTrackedImageManager>();
+
+        // targetPrefab = trackableManager.trackedImagePrefab;
+
+        // if (targetPrefab != null)
+        // {
+        //     Debug.Log("Target prefab not null");
+        //     monitorScreens[2] = targetPrefab;
+        // }
+        if (GameObject.Find("ARTrackedImage") != null) {
+            rectTransform.sizeDelta = new Vector2(150, 150);
+        }
     }
 
     private void SetNewAnchorPos(float x, float y)
@@ -96,7 +109,7 @@ public class Cursor : MonoBehaviour
         int oldCurrentScreenIndex = currentScreenIndex;
 
         if (moveLeft && currentScreenIndex != 0) currentScreenIndex--;
-        else if (!moveLeft && currentScreenIndex < monitorScreens.Length - 1) currentScreenIndex++;
+        else if (!moveLeft && currentScreenIndex < monitorScreens.Length - 1 && monitorScreens[currentScreenIndex + 1] != null) currentScreenIndex++;
 
         bool changedScreen = oldCurrentScreenIndex != currentScreenIndex;
         if (changedScreen) ChangeActiveMonitor(moveLeft);
