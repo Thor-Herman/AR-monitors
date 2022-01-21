@@ -9,6 +9,7 @@ public class MonitorController : MonoBehaviour
     void Start()
     {
         activeMonitors.Add(this);
+        Debug.Log($"Added {gameObject.name}");
     }
 
     void OnDestroy()
@@ -19,6 +20,6 @@ public class MonitorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

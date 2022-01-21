@@ -15,7 +15,6 @@ public class CloseTabScript : AryzonRaycastInteractable
         base.Awake();
         parentCanvas = gameObject.transform.parent.parent.gameObject;
         menuCanvas = parentCanvas.transform.parent.Find("CanvasMenu").gameObject;
-        Debug.Log(gameObject.transform.parent.parent.gameObject);
     }
 
     protected override void Down()
