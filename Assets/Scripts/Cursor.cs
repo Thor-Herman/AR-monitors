@@ -15,7 +15,7 @@ public class Cursor : MonoBehaviour
     RectTransform screen;
     [SerializeField] float mouseSpeed = 1.5f;
 
-    float prevMouseX, prevMouseY;
+    float prevMouseX, prevMouseY, screenWidth;
     bool pressedMouseDown;
     ARTrackedImageManager trackableManager;
 
@@ -38,8 +38,10 @@ public class Cursor : MonoBehaviour
 
         if (screen == null) // Previous frame there were no monitors. Now first monitor is enabled.
         {
-            screen = MonitorController.activeMonitors[currentScreenIndex].gameObject.GetComponent<RectTransform>(); // TODO: MIGHT NEED .gameObject here
+            screen = MonitorController.activeMonitors[currentScreenIndex].gameObject.GetComponent<RectTransform>();
+            screenWidth = screen.rect.width;
             this.gameObject.transform.SetParent(screen, false);
+            Debug.Log("Added first screen");
         }
 
         // MouseCaptureController.CaptureMouse(captureMouse());
@@ -61,13 +63,14 @@ public class Cursor : MonoBehaviour
             pressedMouseDown = false;
             StartCoroutine(MouseClick(upTrigger));
         }
+        Debug.Log(rectTransform.anchoredPosition);
     }
 
     private void SetNewAnchorPos(float x, float y)
     {
-        float rightSideBoundary = screen.rect.width / 2;
+        float rightSideBoundary = screenWidth / 2;
         float leftSideBoundary = -rightSideBoundary;
-        float topBoundary = screen.rect.width / 2;
+        float topBoundary = screenWidth / 2;
         float bottomBoundary = -topBoundary;
 
         float xDelta = 1f; // Used so that the cursor can be outside of the boundary for HandleMouseMonitorTransitions
@@ -87,7 +90,7 @@ public class Cursor : MonoBehaviour
 
     private void HandleMouseMonitorTransitions()
     {
-        float rightSideBoundary = screen.rect.width / 2;
+        float rightSideBoundary = screenWidth / 2;
         float leftSideBoundary = -rightSideBoundary;
         float x = rectTransform.localPosition.x;
 
@@ -113,8 +116,9 @@ public class Cursor : MonoBehaviour
     {
         screen = MonitorController.activeMonitors[currentScreenIndex].GetComponent<RectTransform>();
         this.gameObject.transform.SetParent(screen, false);
-        float newCursorXValue = moveLeft ? screen.rect.width / 2 : -screen.rect.width / 2;
+        float newCursorXValue = moveLeft ? screenWidth / 2 : -screenWidth / 2;
         SetNewAnchorPos(newCursorXValue, rectTransform.anchoredPosition.y);
+        Debug.Log("Changed to screen " + this.gameObject.transform.parent.gameObject.name);
     }
 
     public static bool RectTransformContainsAnother(RectTransform rectTransform, RectTransform another)

@@ -31,6 +31,7 @@ public class MonitorTracker : MonoBehaviour
 
     void ReorderMonitorList(string newlyAddedMonitorName)
     { //🍝🍝🍝🍝🍝🍝
+        Debug.Log("Newly added monitor name: " + newlyAddedMonitorName);
         if (newlyAddedMonitorName.Equals("Left"))
             ReorderMonitor(0);
         else if (newlyAddedMonitorName.Equals("Middle"))
@@ -43,5 +44,6 @@ public class MonitorTracker : MonoBehaviour
         var newlyAddedMonitor = MonitorController.activeMonitors[MonitorController.activeMonitors.Count - 1];
         MonitorController.activeMonitors.Remove(newlyAddedMonitor);
         MonitorController.activeMonitors.Insert(index, newlyAddedMonitor);
+        Debug.Log(MonitorController.activeMonitors);
     }
 }
