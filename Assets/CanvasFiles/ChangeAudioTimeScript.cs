@@ -26,7 +26,8 @@ public class ChangeAudioTimeScript : AryzonRaycastInteractable
         float relativePosition = 0.0f;
         if (screenIndex == 1)
         {
-            relativePosition = hitPos / 0.7f;
+            relativePosition = 1f + ((hitPos + 0.2f) / 0.8f);
+            Debug.Log(relativePosition);
         }else if(screenIndex == 2)
         {
             relativePosition = (hitPos - 2.5f) / 0.8f;
