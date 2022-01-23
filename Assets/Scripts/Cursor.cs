@@ -39,7 +39,7 @@ public class Cursor : MonoBehaviour
         if (screen == null) // Previous frame there were no monitors. Now first monitor is enabled.
         {
             screen = MonitorController.activeMonitors[currentScreenIndex].gameObject.GetComponent<RectTransform>();
-            screenWidth = screen.rect.width;
+            screenWidth = 2.3f;
             this.gameObject.transform.SetParent(screen, false);
             Debug.Log("Added first screen");
         }
@@ -70,7 +70,7 @@ public class Cursor : MonoBehaviour
     {
         float rightSideBoundary = screenWidth / 2;
         float leftSideBoundary = -rightSideBoundary;
-        float topBoundary = screenWidth / 2;
+        float topBoundary = 0.95f / 2;
         float bottomBoundary = -topBoundary;
 
         float xDelta = 1f; // Used so that the cursor can be outside of the boundary for HandleMouseMonitorTransitions
