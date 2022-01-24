@@ -73,7 +73,7 @@ public class Cursor : MonoBehaviour
         float topBoundary = 0.9f / 2;
         float bottomBoundary = -topBoundary - 0.1f;
 
-        float xDelta = 1f; // Used so that the cursor can be outside of the boundary for HandleMouseMonitorTransitions
+        float xDelta = 0.001f; // Used so that the cursor can be outside of the boundary for HandleMouseMonitorTransitions
 
         float newXValue = Mathf.Clamp(x, leftSideBoundary - xDelta, rightSideBoundary + xDelta);
         float newYValue = Mathf.Clamp(y, bottomBoundary, topBoundary);
