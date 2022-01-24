@@ -63,7 +63,7 @@ public class Cursor : MonoBehaviour
             pressedMouseDown = false;
             StartCoroutine(MouseClick(upTrigger));
         }
-        Debug.Log(rectTransform.anchoredPosition);
+        // Debug.Log(rectTransform.anchoredPosition);
     }
 
     private void SetNewAnchorPos(float x, float y)

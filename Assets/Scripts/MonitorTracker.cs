@@ -19,8 +19,8 @@ public class MonitorTracker : MonoBehaviour
     {
         foreach (var newImage in eventArgs.added)
         {
-            ReorderMonitorList(newImage.referenceImage.name);
             currentScreensActive.Add(newImage.referenceImage.name);
+            ReorderMonitorList(newImage.referenceImage.name);
         }
 
         foreach (var removedImage in eventArgs.removed)
@@ -33,17 +33,22 @@ public class MonitorTracker : MonoBehaviour
     { //🍝🍝🍝🍝🍝🍝
         Debug.Log("Newly added monitor name: " + newlyAddedMonitorName);
         if (newlyAddedMonitorName.Equals("Left"))
-            ReorderMonitor(0);
+            StartCoroutine(ReorderMonitor(0));
         else if (newlyAddedMonitorName.Equals("Middle"))
-            ReorderMonitor(1);
+            StartCoroutine(ReorderMonitor(1));
     }
 
-    void ReorderMonitor(int index)
+    IEnumerator ReorderMonitor(int index)
     {
         // The monitor that was latest added will be the latest one added to the list
+        yield return new WaitForSeconds(1); // So that monitor controller script will happen first
         var newlyAddedMonitor = MonitorController.activeMonitors[MonitorController.activeMonitors.Count - 1];
         MonitorController.activeMonitors.Remove(newlyAddedMonitor);
         MonitorController.activeMonitors.Insert(index, newlyAddedMonitor);
-        Debug.Log(MonitorController.activeMonitors);
+        Debug.Log($"New Monitor Order for list of length {MonitorController.activeMonitors.Count}:");
+        foreach (MonitorController m in MonitorController.activeMonitors)
+        {
+            Debug.Log("Monitor: " + m.ToString());
+        }
     }
 }

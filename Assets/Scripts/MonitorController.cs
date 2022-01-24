@@ -9,12 +9,17 @@ public class MonitorController : MonoBehaviour
     void Start()
     {
         activeMonitors.Add(this);
-        Debug.Log($"Added {gameObject.name}");
+        Debug.Log($"Added {gameObject.name} to monitorcontrollers");
     }
 
     void OnDestroy()
     {
         activeMonitors.Remove(this);
+    }
+
+    public override string ToString()
+    {
+        return this.gameObject.name;
     }
 
     // Update is called once per frame
