@@ -70,8 +70,8 @@ public class Cursor : MonoBehaviour
     {
         float rightSideBoundary = screenWidth / 2;
         float leftSideBoundary = -rightSideBoundary;
-        float topBoundary = 0.95f / 2;
-        float bottomBoundary = -topBoundary;
+        float topBoundary = 0.9f / 2;
+        float bottomBoundary = -topBoundary - 0.1f;
 
         float xDelta = 1f; // Used so that the cursor can be outside of the boundary for HandleMouseMonitorTransitions
 
