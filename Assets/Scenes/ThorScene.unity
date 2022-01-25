@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -939,18 +939,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 555088050}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &611928976 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 611928976, guid: d90f4e09aa13b894ab04b3edf03c9b68,
-    type: 3}
-  m_PrefabInstance: {fileID: 6556383239565827772}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3a329353f4cbe47a7e40e9493e9175, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1569,7 +1557,7 @@ MonoBehaviour:
   disableScreenOverlaysInStereoMode: 1
   setWorldSpaceCameras: 1
   audioTimeScript1: {fileID: 0}
-  audioTimeScript2: {fileID: 611928976}
+  audioTimeScript2: {fileID: 0}
 --- !u!1 &1174876722
 GameObject:
   m_ObjectHideFlags: 0
@@ -7485,6 +7473,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1045783935}
     m_Modifications:
+    - target: {fileID: 173991366546650535, guid: d90f4e09aa13b894ab04b3edf03c9b68,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 173991366546650535, guid: d90f4e09aa13b894ab04b3edf03c9b68,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 173991366546650535, guid: d90f4e09aa13b894ab04b3edf03c9b68,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 321381186990988811, guid: d90f4e09aa13b894ab04b3edf03c9b68,
         type: 3}
       propertyPath: m_Pivot.x
@@ -7589,6 +7592,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5916982686809345486, guid: d90f4e09aa13b894ab04b3edf03c9b68,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6556383240235910578, guid: d90f4e09aa13b894ab04b3edf03c9b68,
         type: 3}
