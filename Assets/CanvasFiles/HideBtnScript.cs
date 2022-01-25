@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Aryzon;
 
 public class HideBtnScript : AryzonRaycastInteractable
@@ -11,10 +12,12 @@ public class HideBtnScript : AryzonRaycastInteractable
     bool clicked = false;
     public HideBtnScript hideBtnScript;
     public Collider hiddenCanvasCollider;
+    public Image hiddenCanvasImage;
 
     void Start()
     {
         hiddenCanvasCollider.enabled = false;
+        hiddenCanvasImage.enabled = false;
     }
 
 
@@ -36,6 +39,7 @@ public class HideBtnScript : AryzonRaycastInteractable
             else
             {
                 hiddenCanvasCollider.enabled = false;
+                hiddenCanvasImage.enabled = false;
                 currentCanvas.SetActive(true);
                 // clicked = true;
             }
@@ -61,6 +65,7 @@ public class HideBtnScript : AryzonRaycastInteractable
         Debug.Log("This will show up");
         yield return new WaitForSeconds(.11f);
         hiddenCanvasCollider.enabled = true;
+        hiddenCanvasImage.enabled = true;
         Debug.Log("This isn't gonna show up");
         Debug.Log("ola");
         clicked = true;

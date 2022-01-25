@@ -693,6 +693,7 @@ MonoBehaviour:
   hiddenCanvas: {fileID: 9100117589717960612}
   hideBtnScript: {fileID: 4615344451139937164}
   hiddenCanvasCollider: {fileID: 3615695248218591916}
+  hiddenCanvasImage: {fileID: 7005424982838819055}
 --- !u!1 &452172485260373937
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,6 +824,7 @@ MonoBehaviour:
   hiddenCanvas: {fileID: 9100117589717960612}
   hideBtnScript: {fileID: 4615344451139937164}
   hiddenCanvasCollider: {fileID: 3615695248218591916}
+  hiddenCanvasImage: {fileID: 7005424982838819055}
 --- !u!1 &469278144426859420
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,6 +955,7 @@ MonoBehaviour:
   hiddenCanvas: {fileID: 9100117589717960612}
   hideBtnScript: {fileID: 4615344451139937164}
   hiddenCanvasCollider: {fileID: 3615695248218591916}
+  hiddenCanvasImage: {fileID: 7005424982838819055}
 --- !u!1 &665152056433002380
 GameObject:
   m_ObjectHideFlags: 0
@@ -1083,6 +1086,7 @@ MonoBehaviour:
   hiddenCanvas: {fileID: 9100117589717960612}
   hideBtnScript: {fileID: 4615344451139937164}
   hiddenCanvasCollider: {fileID: 3615695248218591916}
+  hiddenCanvasImage: {fileID: 7005424982838819055}
 --- !u!1 &1376727230459758722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1606,6 +1610,7 @@ MonoBehaviour:
   hiddenCanvas: {fileID: 9100117589717960612}
   hideBtnScript: {fileID: 4615344451139937164}
   hiddenCanvasCollider: {fileID: 3615695248218591916}
+  hiddenCanvasImage: {fileID: 7005424982838819055}
 --- !u!1 &5550769625809916492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,6 +1741,7 @@ MonoBehaviour:
   hiddenCanvas: {fileID: 9100117589717960612}
   hideBtnScript: {fileID: 0}
   hiddenCanvasCollider: {fileID: 3615695248218591916}
+  hiddenCanvasImage: {fileID: 7005424982838819055}
 --- !u!1 &5742290023783121479
 GameObject:
   m_ObjectHideFlags: 0
@@ -2030,6 +2036,7 @@ MonoBehaviour:
   hiddenCanvas: {fileID: 9100117589717960612}
   hideBtnScript: {fileID: 4615344451139937164}
   hiddenCanvasCollider: {fileID: 3615695248218591916}
+  hiddenCanvasImage: {fileID: 7005424982838819055}
 --- !u!1 &7358756913484819159
 GameObject:
   m_ObjectHideFlags: 0
@@ -2364,6 +2371,7 @@ MonoBehaviour:
   hiddenCanvas: {fileID: 9100117589717960612}
   hideBtnScript: {fileID: 4615344451139937164}
   hiddenCanvasCollider: {fileID: 3615695248218591916}
+  hiddenCanvasImage: {fileID: 7005424982838819055}
 --- !u!1 &8265255764992231761
 GameObject:
   m_ObjectHideFlags: 0
@@ -2569,6 +2577,7 @@ MonoBehaviour:
   hiddenCanvas: {fileID: 9100117589717960612}
   hideBtnScript: {fileID: 4615344451139937164}
   hiddenCanvasCollider: {fileID: 3615695248218591916}
+  hiddenCanvasImage: {fileID: 7005424982838819055}
 --- !u!1 &9075896182234126355
 GameObject:
   m_ObjectHideFlags: 0
