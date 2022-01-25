@@ -10,12 +10,13 @@ public class HideBtnScript : AryzonRaycastInteractable
     int counter = 0;
     bool clicked = false;
     public HideBtnScript hideBtnScript;
+    public Collider hiddenCanvasCollider;
 
     void Start()
     {
-        hiddenCanvas.SetActive(false);
+        hiddenCanvasCollider.enabled = false;
     }
-     
+
 
     public void UpdateCurrentCanvas(GameObject canvas)
     {
@@ -26,33 +27,43 @@ public class HideBtnScript : AryzonRaycastInteractable
     {
         if (!clicked)
         {
-            if (gameObject.name.Equals("HideBtn") && (!gameObject.name.Equals("UnhideBtn") || !gameObject.name.Equals("UnhideBtn1")))
+            if (gameObject.name.Equals("HideBtn") && gameObject.active)
             {
                 currentCanvas = gameObject.transform.parent.gameObject;
-                currentCanvas.SetActive(false);
-                hiddenCanvas.SetActive(true);
                 hideBtnScript.UpdateCurrentCanvas(currentCanvas);
-                Debug.Log("ola");
-                clicked = true;
+                StartCoroutine(WaitASecond());
             }
             else
             {
-                hiddenCanvas.SetActive(false);
+                hiddenCanvasCollider.enabled = false;
                 currentCanvas.SetActive(true);
-                clicked = true;
+                // clicked = true;
             }
         }
     }
 
     void FixedUpdate()
     {
-        if(clicked)
+        if (clicked)
         {
-            counter = (counter + 1) % 2;
-            if(counter == 0)
+            counter = (counter + 1) % 20;
+            if (counter == 0)
             {
                 clicked = false;
+                hiddenCanvasCollider.enabled = true;
+                Debug.Log("ENABLED COLLIDER");
             }
         }
+    }
+
+    IEnumerator WaitASecond()
+    {
+        Debug.Log("This will show up");
+        yield return new WaitForSeconds(.11f);
+        hiddenCanvasCollider.enabled = true;
+        Debug.Log("This isn't gonna show up");
+        Debug.Log("ola");
+        clicked = true;
+        currentCanvas.SetActive(false);
     }
 }

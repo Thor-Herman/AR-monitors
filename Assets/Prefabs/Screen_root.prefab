@@ -692,6 +692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hiddenCanvas: {fileID: 9100117589717960612}
   hideBtnScript: {fileID: 4615344451139937164}
+  hiddenCanvasCollider: {fileID: 3615695248218591916}
 --- !u!1 &452172485260373937
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,6 +822,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hiddenCanvas: {fileID: 9100117589717960612}
   hideBtnScript: {fileID: 4615344451139937164}
+  hiddenCanvasCollider: {fileID: 3615695248218591916}
 --- !u!1 &469278144426859420
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,6 +952,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hiddenCanvas: {fileID: 9100117589717960612}
   hideBtnScript: {fileID: 4615344451139937164}
+  hiddenCanvasCollider: {fileID: 3615695248218591916}
 --- !u!1 &665152056433002380
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,6 +1082,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hiddenCanvas: {fileID: 9100117589717960612}
   hideBtnScript: {fileID: 4615344451139937164}
+  hiddenCanvasCollider: {fileID: 3615695248218591916}
 --- !u!1 &1376727230459758722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1601,6 +1605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hiddenCanvas: {fileID: 9100117589717960612}
   hideBtnScript: {fileID: 4615344451139937164}
+  hiddenCanvasCollider: {fileID: 3615695248218591916}
 --- !u!1 &5550769625809916492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1730,6 +1735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hiddenCanvas: {fileID: 9100117589717960612}
   hideBtnScript: {fileID: 0}
+  hiddenCanvasCollider: {fileID: 3615695248218591916}
 --- !u!1 &5742290023783121479
 GameObject:
   m_ObjectHideFlags: 0
@@ -2023,6 +2029,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hiddenCanvas: {fileID: 9100117589717960612}
   hideBtnScript: {fileID: 4615344451139937164}
+  hiddenCanvasCollider: {fileID: 3615695248218591916}
 --- !u!1 &7358756913484819159
 GameObject:
   m_ObjectHideFlags: 0
@@ -2356,6 +2363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hiddenCanvas: {fileID: 9100117589717960612}
   hideBtnScript: {fileID: 4615344451139937164}
+  hiddenCanvasCollider: {fileID: 3615695248218591916}
 --- !u!1 &8265255764992231761
 GameObject:
   m_ObjectHideFlags: 0
@@ -2499,7 +2507,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2f0f05ad51c81414ebd37a231942c77a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2bcb4cfa33b646746965dbe27853b5af, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2560,6 +2568,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hiddenCanvas: {fileID: 9100117589717960612}
   hideBtnScript: {fileID: 4615344451139937164}
+  hiddenCanvasCollider: {fileID: 3615695248218591916}
 --- !u!1 &9075896182234126355
 GameObject:
   m_ObjectHideFlags: 0
