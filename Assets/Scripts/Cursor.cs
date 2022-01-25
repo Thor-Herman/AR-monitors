@@ -23,7 +23,7 @@ public class Cursor : MonoBehaviour
     void Start()
     {
         Input.simulateMouseWithTouches = false;
-        //UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         rectTransform = GetComponent<RectTransform>();
         upTrigger.enabled = false;
         downTrigger.enabled = false;
