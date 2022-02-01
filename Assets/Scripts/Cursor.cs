@@ -23,7 +23,7 @@ public class Cursor : MonoBehaviour
     void Start()
     {
         Input.simulateMouseWithTouches = false;
-        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        // UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         rectTransform = GetComponent<RectTransform>();
         upTrigger.enabled = false;
         downTrigger.enabled = false;
@@ -134,7 +134,6 @@ public class Cursor : MonoBehaviour
 
     private void ToggleMonitorBorder(RectTransform toggleScreen, bool enabled)
     {
-        Transform border = toggleScreen.Find("Border");
-        border.gameObject.GetComponentInChildren<UnityEngine.UI.Image>().enabled = enabled;
+        toggleScreen.Find("Border").gameObject.SetActive(enabled);
     }
 }
