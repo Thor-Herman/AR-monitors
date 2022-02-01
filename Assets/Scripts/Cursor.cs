@@ -39,8 +39,9 @@ public class Cursor : MonoBehaviour
         if (screen == null) // Previous frame there were no monitors. Now first monitor is enabled.
         {
             screen = MonitorController.activeMonitors[currentScreenIndex].gameObject.GetComponent<RectTransform>();
-            screenWidth = 2.3f;
+            ToggleMonitorBorder(screen, true);
             this.gameObject.transform.SetParent(screen, false);
+            screenWidth = 2.3f;
             Debug.Log("Added first screen");
         }
 
@@ -109,16 +110,19 @@ public class Cursor : MonoBehaviour
         else if (!moveLeft && currentScreenIndex < MonitorController.activeMonitors.Count - 1) currentScreenIndex++;
 
         bool changedScreen = oldCurrentScreenIndex != currentScreenIndex;
-        if (changedScreen) ChangeActiveMonitor(moveLeft);
+        if (changedScreen) ChangeActiveMonitor(moveLeft, oldCurrentScreenIndex);
     }
 
-    private void ChangeActiveMonitor(bool moveLeft)
+    private void ChangeActiveMonitor(bool moveLeft, int oldCurrentScreenIndex)
     {
+        RectTransform oldScreen = MonitorController.activeMonitors[oldCurrentScreenIndex].GetComponent<RectTransform>();
         screen = MonitorController.activeMonitors[currentScreenIndex].GetComponent<RectTransform>();
         this.gameObject.transform.SetParent(screen, false);
         float newCursorXValue = moveLeft ? screenWidth / 2 : -screenWidth / 2;
         SetNewAnchorPos(newCursorXValue, rectTransform.anchoredPosition.y);
         Debug.Log("Changed to screen " + this.gameObject.transform.parent.gameObject.name);
+        ToggleMonitorBorder(oldScreen, false);
+        ToggleMonitorBorder(screen, true);
     }
 
     public static bool RectTransformContainsAnother(RectTransform rectTransform, RectTransform another)
@@ -126,5 +130,11 @@ public class Cursor : MonoBehaviour
         Vector2 yVector = new Vector2(another.rect.yMax, another.rect.yMin);
         Vector2 xVector = new Vector2(another.rect.xMax, another.rect.xMin);
         return rectTransform.rect.Contains(yVector) && rectTransform.rect.Contains(xVector);
+    }
+
+    private void ToggleMonitorBorder(RectTransform toggleScreen, bool enabled)
+    {
+        Transform border = toggleScreen.Find("Border");
+        border.gameObject.GetComponentInChildren<UnityEngine.UI.Image>().enabled = enabled;
     }
 }
