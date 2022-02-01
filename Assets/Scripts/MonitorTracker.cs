@@ -42,13 +42,16 @@ public class MonitorTracker : MonoBehaviour
     {
         // The monitor that was latest added will be the latest one added to the list
         yield return new WaitForSeconds(1); // So that monitor controller script will happen first
-        var newlyAddedMonitor = MonitorController.activeMonitors[MonitorController.activeMonitors.Count - 1];
-        MonitorController.activeMonitors.Remove(newlyAddedMonitor);
-        MonitorController.activeMonitors.Insert(index, newlyAddedMonitor);
-        Debug.Log($"New Monitor Order for list of length {MonitorController.activeMonitors.Count}:");
-        foreach (MonitorController m in MonitorController.activeMonitors)
+        if (!(index == 1 && MonitorController.activeMonitors.Count == 1)) // If not middle is the only added screen. 
         {
-            Debug.Log("Monitor: " + m.ToString());
+            var newlyAddedMonitor = MonitorController.activeMonitors[MonitorController.activeMonitors.Count - 1];
+            MonitorController.activeMonitors.Remove(newlyAddedMonitor);
+            MonitorController.activeMonitors.Insert(index, newlyAddedMonitor);
+            Debug.Log($"New Monitor Order for list of length {MonitorController.activeMonitors.Count}:");
+            foreach (MonitorController m in MonitorController.activeMonitors)
+            {
+                Debug.Log("Monitor: " + m.ToString());
+            }
         }
     }
 }
