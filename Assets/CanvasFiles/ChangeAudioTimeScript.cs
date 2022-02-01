@@ -22,6 +22,7 @@ public class ChangeAudioTimeScript : AryzonRaycastInteractable
 
     protected override void Down()
     {
+        return;
         Debug.Log($"Current position {hitPos}");
         float relativePosition = 0.0f;
         if (screenIndex == 1)
@@ -40,6 +41,7 @@ public class ChangeAudioTimeScript : AryzonRaycastInteractable
 
     protected override void OnTriggerEnter(Collider other)
     {
+        return;
         if (other.gameObject.CompareTag("Mouse"))
         {
             this.hitPos = .9f + other.gameObject.transform.position.x; // For some reason it's inverted?
